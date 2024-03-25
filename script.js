@@ -76,28 +76,77 @@ const LearnerSubmissions = [
   },
 ];
 
-function getLearnerData(course, ag, submissions) {
-  // here, we would process this data to achieve the desired result.
-  const result = [
-    {
-      id: 125,
-      avg: 0.985, // (47 + 150) / (50 + 150)
-      1: 0.94, // 47 / 50
-      2: 1.0, // 150 / 150
-    },
-    {
-      id: 132,
-      avg: 0.82, // (39 + 125) / (50 + 150)
-      1: 0.78, // 39 / 50
-      2: 0.833, // late: (140 - 15) / 150
-    },
-  ];
+function calculateGradePercentage (studentGrade, pointsPossible){ // need to add due date and submission date
+    let studentPercentage;
+    if (studentGrade>=0 && studentGrade<=pointsPossible){
+        studentPercentage = studentGrade/pointsPossible;
+        console.log(`The grade percentage is: ${studentPercentage}`);
+    }
+    else {
+        console.log("This is not a valid grade.");
+    }
 
-  return result;
+    return studentPercentage;
+}
+
+function getLearnerData(course, ag, submissions) { //course, ag, 
+    const studentData = [];
+    
+    //loop through each assignment submission
+    submissions.forEach(submission => {
+        const learnerId = submission.learner_id;
+        const assignmentId = submission.assignment_id;
+        const score = submission.submission.score;
+        const pointsPossible = ag.assignments.find(a => a.id === assignmentId).points_possible; //Find assignment boject with matching ID, then access points_possible
+
+    // Check if the students ID already exists in the studentData, if not will return -1
+    let existingStudentIndex = studentData.findIndex(learner => learner.id === learnerId);
+
+    // If the student doesn't exist, add it to the studentData
+    if (existingStudentIndex === -1){
+        studentData.push({id:learnerId});
+        existingStudentIndex = studentData.length - 1; // The index, can't be -1 going forward, so we reassign it to the last added item
+
+    }
+
+    //Calculate percentage of points correct
+    const percentageCorrect = calculateGradePercentage(score, pointsPossible);
+
+    // Add the assignment data to the studentData object
+    studentData[existingStudentIndex][assignmentId] = percentageCorrect; //Can't use push method because we are modifying an existing object
+
+    });
+
+  return studentData;
 }
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
-for (i=0; i<result.length; i++){
-console.log(`Student ID: ${result[i].id}`);}
-console.log(``)
+console.log(result);
+
+
+
+
+  // here, we would process this data to achieve the desired result.
+//   const result = [
+//     {
+//       id: 125,
+//       avg: 0.985, // (47 + 150) / (50 + 150)
+//       1: 0.94, // 47 / 50
+//       2: 1.0, // 150 / 150
+//     },
+//     {
+//       id: 132,
+//       avg: 0.82, // (39 + 125) / (50 + 150)
+//       1: 0.78, // 39 / 50
+//       2: 0.833, // late: (140 - 15) / 150
+//     },
+//   ];
+
+
+// for (i=0; i<result.length; i++){
+// console.log(`Student ID: ${result[i].id}`);
+// console.log(`Assignment 1: ${result[i][1]}`);
+// console.log(`Assignment 2: ${result[i][2]}`);
+// console.log(`Average: ${result[1].avg}`);
+// }
