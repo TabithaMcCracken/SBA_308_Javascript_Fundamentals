@@ -88,6 +88,7 @@ function calculateGradePercentage(studentGrade, pointsPossible) {
   return studentPercentage;
 }
 
+//function calculateTotalAverage ()
 function isDueDatePassed(dueDate) {
   // make them date objects
   dueDate = new Date(dueDate);
@@ -116,6 +117,9 @@ function getLearnerData(course, ag, submissions) {
     const pointsPossible = ag.assignments.find((a) => a.id === assignmentId).points_possible; //Find assignment object with matching ID, then access points_possible
     const dueDate = ag.assignments.find((a) => a.id === assignmentId).due_at; //Finds assignment with matching id
     console.log(typeof(assignmentId))
+    let gradeCounter = 0;
+    let pointsPossibleCounter = 0;
+
     //  Check to see if due date is passed
     if (isDueDatePassed(dueDate)) {
       // Check if the students ID already exists in the studentData, if not will return -1
@@ -135,7 +139,12 @@ function getLearnerData(course, ag, submissions) {
         // Add the assignment data to the studentData object
         studentData[existingStudentIndex][assignmentId] = parseFloat(percentageCorrect); //Can't use push method because we are modifying an existing object
 
+        // Add the grade received by stuent to the counter
+        
+        studentData[existingStudentIndex]['avg'] = 27;
+        
     }
+
   });
 
   return studentData;
