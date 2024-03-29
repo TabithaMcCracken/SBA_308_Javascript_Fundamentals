@@ -10,7 +10,9 @@ The program outputs an array of objects, each representing a student and their c
   - [calculateGradePercentage](#calculategradepercentage)
   - [isDueDatePassed](#isduedatepassed)
   - [getLearnerData](#getlearnerdata)
-- [Sample Output](#sample-output)
+- [Elements](#elements)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Usage
 
@@ -37,8 +39,8 @@ This is the main function of the program. It takes three parameters: CourseInfo 
 ## Elements
 This program shows use of the following: how to declare variables using let and const, uses operators to perform calculations, uses strings, numbers and Boolean values, uses if/else statements, uses the try/catch method, uses two different kinds of loops, uses a loop control keyword, creates and manipulates arrays and objects, demonstrates the retrieval, manipulation, and removal of items in an array and properties of an object, uses functions to handle repeat tasks, outputs processed data, runs without errors, was committed to github, and contains this lovely README file.
 
-## Contributing:
+## Contributing
 Contributions to enhance the Adventure Together web application are welcome. Please feel free to fork this repository, make improvements, and submit a pull request with your changes.
 
-## License:
+## License
 This project is licensed under the MIT License.
