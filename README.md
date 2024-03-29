@@ -19,11 +19,8 @@ The program outputs an array of objects, each representing a student and their c
 To use this program, follow these steps:
 
 1. Ensure you have Node.js installed on your system.
-2. Copy the provided code into a JavaScript file (e.g., `gradeCalculator.js`).
+2. Copy the provided code into a JavaScript file (e.g., `3script.js`).
 3. Run the JavaScript file using Node.js.
-   ```bash
-   node gradeCalculator.js
-   ```
 4. The program will output the calculated grades for each student.
 
 ## Functions
