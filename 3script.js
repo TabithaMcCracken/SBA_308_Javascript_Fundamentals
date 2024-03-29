@@ -169,6 +169,8 @@ function getLearnerData(course, ag, submissions) {
         const gradePercentageNumber = parseInt(gradePercentage);
         studentData[existingStudentIndex][assignmentId] = parseInt(gradePercentageNumber.toFixed(2));
         studentData[existingStudentIndex].validAssignmentCount++;
+      } else {
+        continue;
       }
     
     };
