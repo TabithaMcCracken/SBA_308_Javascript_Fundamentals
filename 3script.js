@@ -222,5 +222,5 @@ function getLearnerData(course, ag, submissions) {
 }
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
-
+console.log("Here is the student data with the grades displayed as a rounded percentage.")
 console.log(result);
